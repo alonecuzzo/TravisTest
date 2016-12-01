@@ -1,0 +1,13 @@
+app_identifier "com.ustwo.TravisTest.app-store"
+apple_id "jabari.bell@pxlflu.net"
+
+for_platform :ios do
+  for_lane :test do
+    app_identifier "com.ustwo.TravisTest.development"
+  end
+
+  for_lane :beta do
+    app_identifier "com.ustwo.TravisTest.ad-hoc"
+  end
+end
+
