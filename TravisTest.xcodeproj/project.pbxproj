@@ -14,6 +14,8 @@
 		0CA428201DEC8F300069FA00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA4281E1DEC8F300069FA00 /* LaunchScreen.storyboard */; };
 		0CA4282B1DEC8F310069FA00 /* TravisTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA4282A1DEC8F310069FA00 /* TravisTestTests.swift */; };
 		0CA428361DEC8F310069FA00 /* TravisTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA428351DEC8F310069FA00 /* TravisTestUITests.swift */; };
+		0CADB96B1DF0BC9B0072EA2D /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CADB9691DF0BC9B0072EA2D /* HockeySDK.framework */; };
+		0CADB96C1DF0BC9B0072EA2D /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0CADB96A1DF0BC9B0072EA2D /* HockeySDKResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		0CA428311DEC8F310069FA00 /* TravisTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravisTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA428351DEC8F310069FA00 /* TravisTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravisTestUITests.swift; sourceTree = "<group>"; };
 		0CA428371DEC8F310069FA00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CADB9691DF0BC9B0072EA2D /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		0CADB96A1DF0BC9B0072EA2D /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CADB96B1DF0BC9B0072EA2D /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +102,7 @@
 		0CA428141DEC8F300069FA00 /* TravisTest */ = {
 			isa = PBXGroup;
 			children = (
+				0CADB9681DF0BC9B0072EA2D /* HockeySDK.embeddedframework */,
 				0CA428151DEC8F300069FA00 /* AppDelegate.swift */,
 				0CA428171DEC8F300069FA00 /* ViewController.swift */,
 				0CA428191DEC8F300069FA00 /* Main.storyboard */,
@@ -125,6 +131,16 @@
 			path = TravisTestUITests;
 			sourceTree = "<group>";
 		};
+		0CADB9681DF0BC9B0072EA2D /* HockeySDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				0CADB9691DF0BC9B0072EA2D /* HockeySDK.framework */,
+				0CADB96A1DF0BC9B0072EA2D /* HockeySDKResources.bundle */,
+			);
+			name = HockeySDK.embeddedframework;
+			path = "HockeySDK-iOS/HockeySDK.embeddedframework";
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +151,7 @@
 				0CA4280E1DEC8F300069FA00 /* Sources */,
 				0CA4280F1DEC8F300069FA00 /* Frameworks */,
 				0CA428101DEC8F300069FA00 /* Resources */,
+				0CADB9671DF0BC730072EA2D /* Hockey */,
 			);
 			buildRules = (
 			);
@@ -236,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CA428201DEC8F300069FA00 /* LaunchScreen.storyboard in Resources */,
+				0CADB96C1DF0BC9B0072EA2D /* HockeySDKResources.bundle in Resources */,
 				0CA4281D1DEC8F300069FA00 /* Assets.xcassets in Resources */,
 				0CA4281B1DEC8F300069FA00 /* Main.storyboard in Resources */,
 			);
@@ -256,6 +274,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CADB9671DF0BC730072EA2D /* Hockey */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Hockey;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0CA4280E1DEC8F300069FA00 /* Sources */ = {
@@ -368,7 +403,7 @@
 			};
 			name = Debug;
 		};
-		0CA428391DEC8F310069FA00 /* Release */ = {
+		0CA428391DEC8F310069FA00 /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -409,33 +444,42 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = "App Store";
 		};
 		0CA4283B1DEC8F310069FA00 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WRHWKXLX7C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
 				INFOPLIST_FILE = TravisTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ustwo.TravisTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ustwo.TravisTest.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		0CA4283C1DEC8F310069FA00 /* Release */ = {
+		0CA4283C1DEC8F310069FA00 /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ustwo studio ltd";
 				DEVELOPMENT_TEAM = WRHWKXLX7C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
 				INFOPLIST_FILE = TravisTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ustwo.TravisTest;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ustwo.TravisTest.app-store";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
-			name = Release;
+			name = "App Store";
 		};
 		0CA4283E1DEC8F310069FA00 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -452,7 +496,7 @@
 			};
 			name = Debug;
 		};
-		0CA4283F1DEC8F310069FA00 /* Release */ = {
+		0CA4283F1DEC8F310069FA00 /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -465,7 +509,7 @@
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TravisTest.app/TravisTest";
 			};
-			name = Release;
+			name = "App Store";
 		};
 		0CA428411DEC8F310069FA00 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -481,7 +525,7 @@
 			};
 			name = Debug;
 		};
-		0CA428421DEC8F310069FA00 /* Release */ = {
+		0CA428421DEC8F310069FA00 /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -493,7 +537,97 @@
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = TravisTest;
 			};
-			name = Release;
+			name = "App Store";
+		};
+		0CADB9631DF0B3890072EA2D /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		0CADB9641DF0B3890072EA2D /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ustwo studio ltd";
+				DEVELOPMENT_TEAM = WRHWKXLX7C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
+				INFOPLIST_FILE = TravisTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ustwo.TravisTest.ad-hoc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = "Ad Hoc";
+		};
+		0CADB9651DF0B3890072EA2D /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = WRHWKXLX7C;
+				INFOPLIST_FILE = TravisTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ustwo.TravisTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TravisTest.app/TravisTest";
+			};
+			name = "Ad Hoc";
+		};
+		0CADB9661DF0B3890072EA2D /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = WRHWKXLX7C;
+				INFOPLIST_FILE = TravisTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ustwo.TravisTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = TravisTest;
+			};
+			name = "Ad Hoc";
 		};
 /* End XCBuildConfiguration section */
 
@@ -502,34 +636,41 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA428381DEC8F310069FA00 /* Debug */,
-				0CA428391DEC8F310069FA00 /* Release */,
+				0CA428391DEC8F310069FA00 /* App Store */,
+				0CADB9631DF0B3890072EA2D /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "App Store";
 		};
 		0CA4283A1DEC8F310069FA00 /* Build configuration list for PBXNativeTarget "TravisTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA4283B1DEC8F310069FA00 /* Debug */,
-				0CA4283C1DEC8F310069FA00 /* Release */,
+				0CA4283C1DEC8F310069FA00 /* App Store */,
+				0CADB9641DF0B3890072EA2D /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "App Store";
 		};
 		0CA4283D1DEC8F310069FA00 /* Build configuration list for PBXNativeTarget "TravisTestTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA4283E1DEC8F310069FA00 /* Debug */,
-				0CA4283F1DEC8F310069FA00 /* Release */,
+				0CA4283F1DEC8F310069FA00 /* App Store */,
+				0CADB9651DF0B3890072EA2D /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "App Store";
 		};
 		0CA428401DEC8F310069FA00 /* Build configuration list for PBXNativeTarget "TravisTestUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA428411DEC8F310069FA00 /* Debug */,
-				0CA428421DEC8F310069FA00 /* Release */,
+				0CA428421DEC8F310069FA00 /* App Store */,
+				0CADB9661DF0B3890072EA2D /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "App Store";
 		};
 /* End XCConfigurationList section */
 	};
